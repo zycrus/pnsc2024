@@ -35,7 +35,7 @@ void LCD_Init()
 
 void LCD_SendString(char *_str)
 {
-
+  while (*_str) LCD_SendData(_str++);
 }
 
 void LCD_Clear()
