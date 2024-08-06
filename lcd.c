@@ -22,3 +22,23 @@ void LCD_SendData(char _data)
   LCD_SendByte((_data>>4) & 0x0f, 1);
   LCD_SendByte((_data) & 0x0f, 1);
 }
+
+void LCD_GoToXY(int x, int y)
+{
+
+}
+
+void LCD_Init()
+{
+
+}
+
+void LCD_SendString(char *_str)
+{
+
+}
+
+void LCD_Clear()
+{
+  LCD_SendCMD(0x01);
+}
