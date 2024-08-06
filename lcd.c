@@ -8,19 +8,17 @@ void LCD_SendByte(char _byte, int _rs)
   HAL_GPIO_WritePin(D4_GPIO_Port, D7_pin, (_byte<<3) & 0x01);
 
   HAL_GPIO_WritePin(EN_GPIO_Port, EN_Pin, GPIO_PIN_SET);
-  delayMicro(20);
   HAL_GPIO_WritePin(EN_GPIO_Port, EN_Pin, GPIO_PIN_RESET);
-  delayMicro(20);
 }
 
 void LCD_SendCMD(char _cmd)
 {
-  LCD_SendByte((_cmd<<4) & 0x0f, 1);
-  LCD_SendByte((_cmd) & 0x0f, 1);
+  LCD_SendByte((_cmd>>4) & 0x0f, 0);
+  LCD_SendByte((_cmd) & 0x0f, 0);
 }
 
 void LCD_SendData(char _data)
 {
-  LCD_SendByte((_cmd<<4) & 0x0f, 0);
-  LCD_SendByte((_cmd) & 0x0f, 0);
+  LCD_SendByte((_data>>4) & 0x0f, 1);
+  LCD_SendByte((_data) & 0x0f, 1);
 }
