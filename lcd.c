@@ -25,7 +25,7 @@ void LCD_SendData(char _data)
 
 void LCD_GoToXY(int x, int y)
 {
-
+  LCD_SendCMD(0x80 + _col + (_row * 0x40), _htim);
 }
 
 void LCD_Init()
@@ -44,7 +44,7 @@ void LCD_Init()
 
 void LCD_SendString(char *_str)
 {
-  while (*_str) LCD_SendData(_str++);
+  while (*_str) LCD_SendData(*_str++);
 }
 
 void LCD_Clear()
