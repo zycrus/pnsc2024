@@ -31,15 +31,14 @@ void LCD_GoToXY(int x, int y)
 void LCD_Init()
 {
   HAL_Delay(80);
-  LCD_SendCMD(0x02);
-  LCD_SendCMD(0x28);
-  delayMicro(40);
-  LCD_SendCMD(0x08);
-  delayMicro(40);
-  LCD_SendCMD(0x01);
-  HAL_Delay(2);
-  LCD_SendCMD(0x06);
-  LCD_SendCMD(0x0C);
+	LCD_SendCMD(0x02);
+	LCD_SendCMD(0x28);
+	delayMicro(40);
+	LCD_SendCMD(0x0E);
+	delayMicro(40);
+	LCD_SendCMD(0x01);
+	HAL_Delay(2);
+	LCD_SendCMD(0x06);
 }
 
 void LCD_SendString(char *_str)
@@ -50,4 +49,5 @@ void LCD_SendString(char *_str)
 void LCD_Clear()
 {
   LCD_SendCMD(0x01);
+  HAL_Delay(2);
 }
