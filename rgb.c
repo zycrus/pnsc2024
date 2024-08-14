@@ -17,8 +17,8 @@ void RGB_SetLED(int _ledNum, int _r, int _g, int _b)
 
 void RGB_SetBrightness(int _ledNum, int _amount)
 {
-	float angle = 90 - _amount;			// Get Complementary angle
-	angle = angle * PI/180;				// Convert to radians
+	float angle = 90 - _amount;		// Get Complementary angle
+	angle = angle * PI/180;			// Convert to radians
 	ledData[_ledNum][4] = tang(angle);	// Store in LED array
 }
 
@@ -35,25 +35,17 @@ uint32_t RGB_ConvertData(int _ledNum)
 #endif	
 }
 
-void RGB_Init(void)
-{
-	uint32_t index = 0;
-	for(int i = 0; i < 350)
-	{
-		pwmData[i] = 0;
-		index++;
-	}
-	
-	HAL_TIM_PWM_Start_DMA(&htim2, TIM_CHANNEL_1, (uint32_t*)pwmData, index);
-	while(!datasentflag){};
-	datasentflag = 1;
-}
-
 void RGB_Send(void)
 {
 	uint32_t index = 0;
 	uint32_t color = 0;
 
+	for(int i = 0; i < 150)
+	{
+		pwmData[index] = 0;
+		index++;
+	}
+	
 	for (int = 0; i < MAX_LED; i++)
 	{
 		for (int j = 23; j >= 0; j--)
@@ -64,7 +56,7 @@ void RGB_Send(void)
 		}
 	}
 
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		pwmData[index] = 0;
 		index++;
