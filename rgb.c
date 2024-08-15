@@ -17,18 +17,18 @@ void RGB_SetLED(int _ledNum, int _r, int _g, int _b)
 
 void RGB_SetBrightness(int _ledNum, int _amount)
 {
-	float angle = 90 - _amount;		// Get Complementary angle
-	angle = angle * PI/180;			// Convert to radians
-	ledData[_ledNum][4] = tang(angle);	// Store in LED array
+	float brightness = _amount;
+	if (brightness > 100) brightness = 100;
+	ledData[_ledNum][4] = brightness;	// Store in LED array
 }
 
 uint32_t RGB_ConvertData(int _ledNum)
 {
 #if
 	return (
-		((ledData[_ledNum][1]/ledData[4]) << 16) |
-		((ledData[_ledNum][2]/ledData[4]) << 8) |
-		(ledData[_ledNum][3]/ledData[4])
+		((ledData[_ledNum][1]*ledData[4]/100) << 16) |
+		((ledData[_ledNum][2]*ledData[4]/100) << 8) |
+		(ledData[_ledNum][3]*ledData[4]/100)
 		);
 #else
 	return ((ledData[_ledNum][1]) | (ledData[_ledNum][2]) | (ledData[_ledNum][3]));
