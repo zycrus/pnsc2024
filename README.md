@@ -8,10 +8,10 @@ set clock to 32MHz\
 TIM2:\
 Counter Period: 40-1\
 DMA: Memory to Peripheral\
-\t    -Mode: Normal\
-\t    -Increment Address: Memory\
-\t    -Data Width: Half Word/
-/
+    -Mode: Normal\
+    -Increment Address: Memory\
+    -Data Width: Half Word\
+\
 TIM21:\
 Prescaler: 32-1\
 Counter Period: 65535\
